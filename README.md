@@ -19,15 +19,15 @@ Beyond the Plugin, Alexandria’s theoretical work will include research, essays
 
 ## Project Outline
 
-### Alexandria Grasshopper Plugin
+### Alexandria Grasshopper Plugin (Public Application)
 
 Alexandria’s Grasshopper Plugin simplifies complex parametric design workflows while preserving customizability and user input, designed for quickly onboarding novice designers and for assisting experienced users with their existing workflows.
 
-### Parametric Design Companion Document and Design Catalog
+### Parametric Design Companion Document and Design Catalog (Physical Media, PDF)
 
 The Companion Document is a compilation of designs built using Alexandria which are fabricatable and commercially-viable. Given the virtually infinite possibilities of parametric design, the Document is not comprehensive, rather it should be viewed as reference material.
 The Design Catalog is a combination of client-facing print and physical media which offers tangible samples of the work created by Alexandria. Physical samples are 3D-printed, laser-cut, CNC-milled, etc. to showcase the breadth of Alexandria’s capabilities.
 
-### Knowledge Base
+### Online Knowledge Base and Project Hub (Web)
 
 Home to all of the work produced by Alexandria. Latest application releases, respective documentation as well as additional resources such as sample files (for download), case studies, and written research are available here. Each release (public beta, stable releases, and legacy) are published with accompanying sample files (called “Libraries”) and version release notes. 
