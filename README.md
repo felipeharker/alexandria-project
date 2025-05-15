@@ -14,17 +14,20 @@ Harkitecture-Alexandria (Alexandria, for short) is dedicated to the research and
 
 ## Specifications
 
-Alexandria Labs’s flagship product and primary focus is Alexandria Grasshopper Plugin, a tool built for Rhinoceros 3D modeling application. The Plugin consists of a collection of user-facing components, a web-based knowledge center, and a companion document, which showcases some of the endless design possibilities Alexandria offers.
+Alexandria's flagship product and primary focus is Alexandria Grasshopper Plugin, a tool built for Rhinoceros 3D modeling application. The Plugin consists of a collection of user-facing components, a web-based knowledge center, and a companion document, which showcases some of the endless design possibilities Alexandria offers.
 Beyond the Plugin, Alexandria’s theoretical work will include research, essays, articles, and documentation to be made publicly available through the project website. The scope of research will include parametric/computational design, the role of artificial intelligence in the design process, and the broader applications of both in architectural design-build environments.
 
-## Alexandria for Grasshopper (Public Application)
+## Project Outline
 
-Details coming soon...
+### Alexandria Grasshopper Plugin
 
-## Parametric Design Graphics Manual (Print Media and PDF)
+Alexandria’s Grasshopper Plugin simplifies complex parametric design workflows while preserving customizability and user input, designed for quickly onboarding novice designers and for assisting experienced users with their existing workflows.
 
-Details coming soon...
+### Parametric Design Companion Document and Design Catalog
 
-## Documentation (Wiki)
+The Companion Document is a compilation of designs built using Alexandria which are fabricatable and commercially-viable. Given the virtually infinite possibilities of parametric design, the Document is not comprehensive, rather it should be viewed as reference material.
+The Design Catalog is a combination of client-facing print and physical media which offers tangible samples of the work created by Alexandria. Physical samples are 3D-printed, laser-cut, CNC-milled, etc. to showcase the breadth of Alexandria’s capabilities.
 
-Details coming soon...
+### Knowledge Base
+
+Home to all of the work produced by Alexandria. Latest application releases, respective documentation as well as additional resources such as sample files (for download), case studies, and written research are available here. Each release (public beta, stable releases, and legacy) are published with accompanying sample files (called “Libraries”) and version release notes. 
