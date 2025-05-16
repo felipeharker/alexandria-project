@@ -2,7 +2,7 @@
 
 ## Overview
 
-Harkitecture-**Alexandria** (Alexandria, for short) is dedicated to the research and development of computational design processes. Specifically, Alexandria leverages artificial intelligence and parametric architectural design workflows to design, document, and fabricate interior and exterior architectural products.
+Harkitecture-*Alexandria* (Alexandria, for short) is dedicated to the research and development of computational design processes. Specifically, Alexandria leverages artificial intelligence and parametric architectural design workflows to design, document, and fabricate interior and exterior architectural products.
 
 ## Objectives
 
