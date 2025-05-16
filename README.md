@@ -25,7 +25,7 @@ Alexandria’s Grasshopper Plugin simplifies complex parametric design workflows
 
 ### Parametric Design Companion Document and Design Catalog (Physical Media, PDF)
 
-The Companion Document is a compilation of designs built using Alexandria which are fabricatable and commercially-viable. Given the virtually infinite possibilities of parametric design, the Document is not comprehensive, rather it should be viewed as reference material.
+The Companion Document is a compilation of designs built using Alexandria which are fabricable and commercially-viable. Given the virtually infinite possibilities of parametric design, the Document is not comprehensive, rather it should be viewed as reference material.
 The Design Catalog is a combination of client-facing print and physical media which offers tangible samples of the work created by Alexandria. Physical samples are 3D-printed, laser-cut, CNC-milled, etc. to showcase the breadth of Alexandria’s capabilities.
 
 ### Online Knowledge Base and Project Hub (Web)
