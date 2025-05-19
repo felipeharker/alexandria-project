@@ -3,6 +3,10 @@
 ## Overview
 Alexandria is dedicated to the research and development of computational design processes. Specifically, Alexandria leverages artificial intelligence and parametric architectural design workflows to design, document, and fabricate interior and exterior architectural products.
 
+## Alexandria Project Wiki
+
+[Alexandria Project Wiki](https://github.com/felipeharker/alexandria-project/wiki#home)
+
 ## Objectives
 
 - Conduct, compile, and publish research and documentation related to parametric/computational architectural design processes
