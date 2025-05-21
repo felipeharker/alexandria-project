@@ -1,0 +1,523 @@
+body {
+    font-family: 'times', sans-serif;
+    margin-left: 170px;
+    padding: 0;
+    background-color: var(--color-a);
+    color: var(--color-b);
+    line-height: 1.4;
+}
+
+.background-1 {
+    background-image: url(https://harkitecture-3.s3.us-east-1.amazonaws.com/media/web-general/background-images/background-1.svg);
+}
+
+main {
+    max-width: 95%;
+    margin: 0px auto;
+    padding: 0px 0px;
+}
+
+header {
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    background-color: #fff;
+}
+
+.home-images {
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, .4);
+}
+
+.home-images:hover {
+    box-shadow: 4px 6px 8px rgba(0, 0, 0, .9);
+}
+
+#home-images-1a:hover {
+    box-shadow: 4px 6px 8px var(--color-1);
+}
+
+#home-images-2a:hover {
+    box-shadow: 4px 6px 8px var(--color-4);
+}
+
+#home-images-3a:hover {
+    box-shadow: 4px 6px 8px var(--color-3);
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-family: 'helvetica', sans-serif;
+    font-weight: 800;
+    font-size: 3em;
+    color: var(--color-b);
+    padding: 10px 25px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.h1-nav {
+    text-align: left;
+    padding: 10px 0px 10px 20px;
+}
+
+h2 {
+    font-family: 'helvetica', sans-serif;
+    font-weight: 800;
+    font-size: 2em;
+    color: var(--color-b);
+    margin: 6px 0px;
+}
+
+h3 {
+    font-family: 'helvetica', sans-serif;
+    font-weight: 800;
+    font-size: 1.5em;
+    color: var(--color-b);
+    margin: 6px 0px;
+}
+
+.h3-2 {
+    color: var(--color-c);
+}
+
+h4 {
+    font-family: 'helvetica', sans-serif;
+    font-weight: 800;
+    font-size: 1.375em;
+    color: var(--color-b);
+    margin: 6px 0px;
+}
+
+p {
+    font-size: 1.25em;
+    margin: 3px 0px;
+    color: var(--color-b);
+}
+
+.caption {
+    font-size: 1.125em;
+    margin: 0px 0px 8px;
+}
+
+ul {
+    font-size: 1em;
+    margin: 0px 0px 15px;
+    color: var(--color-b);
+    line-height: 1.75em;
+}
+
+li {
+    margin: 0px 0px 15px;
+    color: var(--color-b);
+    line-height: 1.75em;
+}
+
+hr {
+    width: auto;
+    border: none;
+    border-top: .5px solid var(--color-c);
+    margin: 3px 0px 6px;
+}
+
+.hr-50 {
+    width: 50%;
+}
+
+br {
+    display: block;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+a {
+    color: var(--color-6);
+    transition: color 0.3s ease;
+    margin: 5px 0px 20px;
+}
+
+.alex-links-a {
+    color: var(--color-4)
+}
+
+.no-ul {
+    text-decoration: none;
+    color: var(--color-c)
+}
+
+#link-1a:hover {
+    color: var(--color-1)
+}
+
+#link-2a:hover {
+    color: var(--color-4)
+}
+
+#link-3a:hover {
+    color: var(--color-3)
+}
+
+a:hover {
+    color: var(--color-c);
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+iframe {
+    width: 50%;
+    height: 800px;
+    overflow: hidden;
+}
+
+details {
+    background-color: var(--color-a);
+    width: relative;
+}
+
+summary {
+    font-family: 'helvetica', sans-serif;
+    background-color: var(--color-b);
+    color: var(--color-a);
+    padding: 10px 10px;
+    width: 50%;
+}
+
+details[open] summary {
+    transition: 0.5s;
+    background-color: var(--color-1);
+}
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+.column-50 {
+    width: 50%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-30 {
+    width: 30%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-70 {
+    width: 70%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-35 {
+    width: 35%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-65 {
+    width: 65%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-25 {
+    width: 25%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-75 {
+    width: 75%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-15 {
+    width: 15%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-85 {
+    width: 85%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-20 {
+    width: 20%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-80 {
+    width: 80%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-40 {
+    width: 40%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+.column-60 {
+    width: 60%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+/* CSS Variables */
+
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 170px;
+    background-color: var(--color-a);
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+nav a {
+    font-family: 'helvetica', sans-serif;
+    font-weight: medium;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--color-b);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0.5s ease;
+    margin: 0px;
+    /* Smooth hover effect */
+}
+
+.nav-sub {
+    font-weight: normal;
+    padding: 10px 0px 10px 40px;
+}
+
+nav a:hover {
+    color: var(--color-c);
+    background-color: var(--color-b);
+}
+
+.link-1:hover {
+    background-color: var(--color-1);
+}
+
+.link-2:hover {
+    background-color: var(--color-2);
+}
+
+.link-3:hover {
+    background-color: var(--color-3);
+}
+
+.link-4:hover {
+    background-color: var(--color-4);
+}
+
+.link-5:hover {
+    background-color: var(--color-5);
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-a);
+    box-sizing: border-box;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--color-b);
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--color-5-1);
+    color: var(--color-c);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* CSS */
+:root {
+
+    --color-1: #ff7142;
+    --color-2: #ffd24d;
+    --color-3: #a1d76a;
+    --color-3-1: #a1d76a80;
+    --color-4: #4aa1f2;
+    --color-5: #b177ca;
+    --color-5-1: #b177ca80;
+    --color-6: #1764ac;
+
+    --color-12: #da4141;
+
+    --color-7: #3a8d3b;
+    --color-8: #4fbf4f;
+    --color-9: #a4d76a;
+    --color-10: #d6c66b;
+    --color-11: #d59b48;
+
+    --color-a: #fff;
+    --color-b: #000;
+    --color-c: #555;
+    --color-d: #efefef;
+    --color-e: #cacaca;
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 800px) {
+    body {
+        margin-left: 0;
+        /* Remove fixed margin for smaller screens */
+    }
+
+    nav {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* Or space-around if you prefer */
+        align-items: stretch;
+        padding: 10px 0;
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
+
+    nav a,
+    .dropdown>a {
+        font-size: clamp(0.5rem, 2.5vw, 0.9rem);
+        /* Slightly smaller to fit better */
+        padding: 5px 6px;
+        height: 50px;
+        line-height: 1.2;
+        text-align: center;
+        white-space: nowrap;
+        /* Prevents line breaks */
+        flex: 1 1 0;
+        /* All links shrink/grow equally */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        min-width: 0;
+        /* Prevents flex overflow */
+    }
+
+    .dropdown {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .dropdown>a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        /* Ensures dropdown link is the same height as others */
+        padding: 10px 20px;
+    }
+
+    /* Ensure hover doesn't change height */
+    nav a:hover,
+    .dropdown>a:hover {
+        height: 50px;
+        /* Keeps height the same even when hovered */
+        background-color: var(--color-5);
+    }
+
+    .dropdown-content a {
+        display: none;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    h4 {
+        font-size: 1em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .row {
+        flex-wrap: wrap;
+        /* Allow rows to wrap on smaller screens */
+    }
+
+    .column-50,
+    .column-30,
+    .column-70,
+    .column-35,
+    .column-65,
+    .column-25,
+    .column-75,
+    .column-15,
+    .column-85,
+    .column-20,
+    .column-80,
+    .column-40,
+    .column-60 {
+        width: 100%;
+        /* Stack columns vertically on small screens */
+        padding: 5px;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .h1-nav {
+        text-align: left;
+        padding: 10px 0px 10px 20px;
+    }
+
+}
