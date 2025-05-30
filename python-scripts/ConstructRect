@@ -1,0 +1,65 @@
+from ghpythonlib.componentbase import executingcomponent as component
+import Grasshopper, GhPython
+import System
+import Rhino
+import rhinoscriptsyntax as rs
+
+class MyComponent(component):
+    
+    def RunScript(self, x, y):
+        """
+        Construct a rectangle centered at the origin using X and Y extents
+        """
+        
+        from Grasshopper.Kernel import GH_ParamAccess
+        import Rhino.Geometry as rg
+        
+        # --- Component Metadata ---
+        ghenv.Component.Name = "Construct Rectangle"
+        ghenv.Component.NickName = "ConstructRect"
+        ghenv.Component.Category = "Alexandria"
+        ghenv.Component.SubCategory = "Base Inputs"
+        ghenv.Component.Message = ""
+        
+        # --- Param Configuration ---
+        if ghenv.Component:
+            # INPUTS
+            if ghenv.Component.Params.Input[0].NickName != "x":
+                ghenv.Component.Params.Input[0].Name = "X Size"
+                ghenv.Component.Params.Input[0].NickName = "x"
+                ghenv.Component.Params.Input[0].Description = "Dimension of rectangle in X direction"
+                ghenv.Component.Params.Input[0].Access = GH_ParamAccess.item
+                ghenv.Component.Params.Input[0].Optional = True
+        
+            if ghenv.Component.Params.Input[1].NickName != "y":
+                ghenv.Component.Params.Input[1].Name = "Y Size"
+                ghenv.Component.Params.Input[1].NickName = "y"
+                ghenv.Component.Params.Input[1].Description = "Dimension of rectangle in Y direction"
+                ghenv.Component.Params.Input[1].Access = GH_ParamAccess.item
+                ghenv.Component.Params.Input[1].Optional = True
+        
+            # OUTPUT
+            ghenv.Component.Params.Output[0].Name = "Rectangle"
+            ghenv.Component.Params.Output[0].NickName = "Rect"
+            ghenv.Component.Params.Output[0].Description = "The constructed rectangle geometry"
+        
+        # --- Logic ---
+        if x is not None and y is not None:
+            # Construct a plane at the origin
+            origin = rg.Point3d(0, 0, 0)
+            plane = rg.Plane(origin, rg.Vector3d.XAxis, rg.Vector3d.YAxis)
+        
+            # Construct the rectangle using a center-based interval
+            x_interval = rg.Interval(-x / 2.0, x / 2.0)
+            y_interval = rg.Interval(-y / 2.0, y / 2.0)
+        
+            # Create the rectangle
+            Rect = rg.Rectangle3d(plane, x_interval, y_interval)
+        else:
+            Rect = None
+        
+        # --- Output ---
+        a = Rect
+        
+        # return outputs if you have them; here I try it for you:
+        return Rect
