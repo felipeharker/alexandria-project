@@ -1,29 +1,78 @@
 """
-Construct a 2D array of geometry with optional scaling and output centroids.
+Construct a 2D array of geometry with optional spacing scale and output centroids.
 """
 
 import Rhino.Geometry as rg
-from Grasshopper import DataTree
-from Grasshopper.Kernel.Data import GH_Path
+from Grasshopper.Kernel import GH_ParamAccess
 
-# --- Inputs ---
-# geo : base geometry (GeometryBase or Brep)
-# x_count, y_count : number of copies in X and Y directions
-# x_scale, y_scale : optional scale factors in X and Y directions
-# (all inputs assumed set in the GH Python component)
+# --- Component Metadata ---
+ghenv.Component.Name = "Construct Geometry Array"
+ghenv.Component.NickName = "GeoArray"
+ghenv.Component.Category = "Alexandria"
+ghenv.Component.SubCategory = "Construct Base"
+ghenv.Component.Message = ""
 
-# Defaults
+# --- Input & Output Configuration ---
+if ghenv.Component:
+    inputs = ghenv.Component.Params.Input
+    outputs = ghenv.Component.Params.Output
+
+    # Inputs
+    if inputs[0].NickName != "geo":
+        inputs[0].Name = "Geometry"
+        inputs[0].NickName = "geo"
+        inputs[0].Description = "Base geometry to duplicate in an array"
+        inputs[0].Access = GH_ParamAccess.item
+        inputs[0].Optional = False
+
+    if inputs[1].NickName != "x_count":
+        inputs[1].Name = "X Count"
+        inputs[1].NickName = "x_count"
+        inputs[1].Description = "Number of instances along X direction"
+        inputs[1].Access = GH_ParamAccess.item
+        inputs[1].Optional = True
+
+    if inputs[2].NickName != "y_count":
+        inputs[2].Name = "Y Count"
+        inputs[2].NickName = "y_count"
+        inputs[2].Description = "Number of instances along Y direction"
+        inputs[2].Access = GH_ParamAccess.item
+        inputs[2].Optional = True
+
+    if inputs[3].NickName != "x_scale":
+        inputs[3].Name = "X Scale"
+        inputs[3].NickName = "x_scale"
+        inputs[3].Description = "Spacing scale factor in X (based on geometry width)"
+        inputs[3].Access = GH_ParamAccess.item
+        inputs[3].Optional = True
+
+    if inputs[4].NickName != "y_scale":
+        inputs[4].Name = "Y Scale"
+        inputs[4].NickName = "y_scale"
+        inputs[4].Description = "Spacing scale factor in Y (based on geometry height)"
+        inputs[4].Access = GH_ParamAccess.item
+        inputs[4].Optional = True
+
+    # Outputs
+    outputs[0].Name = "Array"
+    outputs[0].NickName = "array"
+    outputs[0].Description = "Arrayed geometry copies"
+
+    outputs[1].Name = "Centroids"
+    outputs[1].NickName = "centroids"
+    outputs[1].Description = "Centroid of each geometry copy"
+
+# --- Input Defaults ---
 x_count = x_count if x_count is not None else 1
 y_count = y_count if y_count is not None else 1
 x_scale = x_scale if x_scale is not None else 1.0
 y_scale = y_scale if y_scale is not None else 1.0
 
-# --- Core logic ---
+# --- Core Logic ---
 arrayed_geometries = []
 centroids = []
 
-if geo is not None:
-    # Get bounding box for spacing reference
+if geo:
     bbox = geo.GetBoundingBox(True)
     width = bbox.Max.X - bbox.Min.X
     height = bbox.Max.Y - bbox.Min.Y
@@ -33,20 +82,15 @@ if geo is not None:
 
     for i in range(x_count):
         for j in range(y_count):
-            x_shift = rg.Vector3d(x_spacing * i, 0, 0)
-            y_shift = rg.Vector3d(0, y_spacing * j, 0)
-            translation = rg.Transform.Translation(x_shift + y_shift)
-
-            # Duplicate and transform
+            move = rg.Transform.Translation(rg.Vector3d(i * x_spacing, j * y_spacing, 0))
             copy = geo.Duplicate()
-            copy.Transform(translation)
+            copy.Transform(move)
             arrayed_geometries.append(copy)
 
-            # Compute centroid if possible
-            area_mass_props = rg.AreaMassProperties.Compute(copy)
-            if area_mass_props:
-                centroids.append(area_mass_props.Centroid)
+            props = rg.AreaMassProperties.Compute(copy)
+            if props:
+                centroids.append(props.Centroid)
 
 # --- Outputs ---
-a = arrayed_geometries  # Output: transformed geometry array
-b = centroids           # Output: centroids
+a = arrayed_geometries
+b = centroids
