@@ -1,0 +1,60 @@
+"""
+Construct Voronoi diagram from input points, optionally clip to a boundary, and optionally fillet corners.
+"""
+
+import Rhino.Geometry as rg
+from Grasshopper import DataTree
+from Grasshopper.Kernel.Data import GH_Path
+import scriptcontext as sc
+import Rhino
+
+# --- Inputs (ensure defaults) ---
+points = points if points else []
+boundary = boundary if boundary else None
+radius = radius if radius else 0.0
+
+# --- Settings ---
+plane = rg.Plane.WorldXY
+tolerance = sc.doc.ModelAbsoluteTolerance
+
+# --- Compute Voronoi Diagram ---
+# Must project points to 2D for Voronoi computation
+projected = [plane.ClosestPoint(pt) for pt in points]
+voronoi_cells = rg.Voronoi.SolveVoronoi(projected, tolerance)
+
+# Convert 2D curves to 3D in plane
+curves = []
+centroids = []
+
+if voronoi_cells and points:
+    for region in voronoi_cells.Regions:
+        # Convert polygon points into a closed polyline
+        poly = rg.Polyline([rg.Point3d(pt.X, pt.Y, 0) for pt in region])
+        if not poly.IsClosed:
+            poly.Add(poly[0])
+        curve = rg.PolylineCurve(poly)
+
+        # Project to 3D plane
+        curve_3d = rg.Curve.CreateMappedCurve(curve, rg.Plane.WorldXY, plane)
+
+        # Optional clipping to boundary
+        if boundary:
+            intersection = rg.Curve.CreateBooleanIntersection(curve_3d, boundary, tolerance)
+            if intersection:
+                for seg in intersection:
+                    # Optional fillet
+                    if radius > 0.0:
+                        seg = seg.ToNurbsCurve()
+                        seg = rg.Curve.CreateFilletCurves(seg, seg, radius, tolerance, tolerance)
+                    curves.append(seg)
+                    centroids.append(seg.PointAtNormalizedLength(0.5))
+        else:
+            if radius > 0.0:
+                curve_3d = curve_3d.ToNurbsCurve()
+                curve_3d = rg.Curve.CreateFilletCurves(curve_3d, curve_3d, radius, tolerance, tolerance)
+            curves.append(curve_3d)
+            centroids.append(curve_3d.PointAtNormalizedLength(0.5))
+
+# --- Outputs ---
+a = curves          # Voronoi regions as curves
+b = centroids       # Optional region centroids
