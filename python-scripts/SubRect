@@ -1,0 +1,65 @@
+"""
+Subdivide a rectangle into a grid of points based on U and V subdivision counts.
+"""
+
+from Grasshopper.Kernel import GH_ParamAccess
+import Rhino.Geometry as rg
+
+# --- Component Metadata ---
+ghenv.Component.Name = "Subdivide Rectangle"
+ghenv.Component.NickName = "SubdivideRect"
+ghenv.Component.Category = "Alexandria"
+ghenv.Component.SubCategory = "Construct Base"
+ghenv.Component.Message = ""
+
+# --- Param Configuration ---
+if ghenv.Component:
+    # INPUTS
+    if ghenv.Component.Params.Input[0].NickName != "rect":
+        ghenv.Component.Params.Input[0].Name = "Rectangle"
+        ghenv.Component.Params.Input[0].NickName = "rect"
+        ghenv.Component.Params.Input[0].Description = "Rectangle to subdivide"
+        ghenv.Component.Params.Input[0].Access = GH_ParamAccess.item
+        ghenv.Component.Params.Input[0].Optional = True
+
+    if ghenv.Component.Params.Input[1].NickName != "u":
+        ghenv.Component.Params.Input[1].Name = "U Count"
+        ghenv.Component.Params.Input[1].NickName = "u"
+        ghenv.Component.Params.Input[1].Description = "Number of divisions along the X axis"
+        ghenv.Component.Params.Input[1].Access = GH_ParamAccess.item
+        ghenv.Component.Params.Input[1].Optional = True
+
+    if ghenv.Component.Params.Input[2].NickName != "v":
+        ghenv.Component.Params.Input[2].Name = "V Count"
+        ghenv.Component.Params.Input[2].NickName = "v"
+        ghenv.Component.Params.Input[2].Description = "Number of divisions along the Y axis"
+        ghenv.Component.Params.Input[2].Access = GH_ParamAccess.item
+        ghenv.Component.Params.Input[2].Optional = True
+
+    # OUTPUTS
+    ghenv.Component.Params.Output[0].Name = "Points"
+    ghenv.Component.Params.Output[0].NickName = "pts"
+    ghenv.Component.Params.Output[0].Description = "Grid of subdivision points"
+
+    ghenv.Component.Params.Output[1].Name = "Rectangle"
+    ghenv.Component.Params.Output[1].NickName = "rectOut"
+    ghenv.Component.Params.Output[1].Description = "Original rectangle"
+
+# --- Logic ---
+pts = []
+
+if rect and u and v and u > 0 and v > 0:
+    x_domain = rect.X
+    y_domain = rect.Y
+    plane = rect.Plane
+
+    for i in range(u + 1):
+        for j in range(v + 1):
+            t_x = x_domain.ParameterAt(float(i) / u)
+            t_y = y_domain.ParameterAt(float(j) / v)
+            pt = plane.PointAt(t_x, t_y)
+            pts.append(pt)
+
+# --- Outputs ---
+a = pts
+b = rect
