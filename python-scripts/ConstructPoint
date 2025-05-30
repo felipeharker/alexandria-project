@@ -1,0 +1,55 @@
+from ghpythonlib.componentbase import executingcomponent as component
+import Grasshopper, GhPython
+import System
+import Rhino
+import rhinoscriptsyntax as rs
+
+class MyComponent(component):
+    
+    def RunScript(self, x, y):
+        """
+        Construct a point on the XY-Coordinate Plane
+        """
+                
+        from Grasshopper.Kernel import GH_ParamAccess
+        import Rhino.Geometry as rg
+                
+        # --- Component Metadata ---
+        ghenv.Component.Name = "Construct Point"
+        ghenv.Component.NickName = "Construct Point"
+        ghenv.Component.Category = "Alexandria"
+        ghenv.Component.SubCategory = "Base Inputs"
+        ghenv.Component.Message = ""
+                
+        # --- Param Configuration ---
+        if ghenv.Component:
+            # INPUTS
+            if ghenv.Component.Params.Input[0].NickName != "x":
+                ghenv.Component.Params.Input[0].Name = "X Coordinate"
+                ghenv.Component.Params.Input[0].NickName = "x"
+                ghenv.Component.Params.Input[0].Description = "The X value of the point"
+                ghenv.Component.Params.Input[0].Access = GH_ParamAccess.item
+                
+            if ghenv.Component.Params.Input[1].NickName != "y":
+                ghenv.Component.Params.Input[1].Name = "Y Coordinate"
+                ghenv.Component.Params.Input[1].NickName = "y"
+                ghenv.Component.Params.Input[1].Description = "The Y value of the point"
+                ghenv.Component.Params.Input[1].Access = GH_ParamAccess.item
+                
+            # OUTPUT
+            ghenv.Component.Params.Output[0].Name = "Point"
+            ghenv.Component.Params.Output[0].NickName = "Pt"
+            ghenv.Component.Params.Output[0].Description = "The constructed XY point"
+                
+        # --- Logic ---
+        if x is not None and y is not None:
+            Pt = rg.Point3d(float(x), float(y), 0)
+        else:
+            Pt = None  # or use rg.Point3d(0,0,0) if you want a fallback
+                
+        # --- Output ---
+        a = Pt
+                
+        
+        # return outputs if you have them; here I try it for you:
+        return Pt
