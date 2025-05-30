@@ -1,0 +1,58 @@
+"""
+Populate a given rectangle with a specified number of random points.
+"""
+
+from Grasshopper.Kernel import GH_ParamAccess
+import Rhino.Geometry as rg
+import random
+
+# --- Component Metadata ---
+ghenv.Component.Name = "Populate Rectangle with Points"
+ghenv.Component.NickName = "PopulateRect"
+ghenv.Component.Category = "Alexandria"
+ghenv.Component.SubCategory = "Base Inputs"
+ghenv.Component.Message = ""
+
+# --- Param Configuration ---
+if ghenv.Component:
+    # INPUTS
+    if ghenv.Component.Params.Input[0].NickName != "rect":
+        ghenv.Component.Params.Input[0].Name = "Rectangle"
+        ghenv.Component.Params.Input[0].NickName = "rect"
+        ghenv.Component.Params.Input[0].Description = "Rectangle to populate with points"
+        ghenv.Component.Params.Input[0].Access = GH_ParamAccess.item
+        ghenv.Component.Params.Input[0].Optional = True
+
+    if ghenv.Component.Params.Input[1].NickName != "n":
+        ghenv.Component.Params.Input[1].Name = "Count"
+        ghenv.Component.Params.Input[1].NickName = "n"
+        ghenv.Component.Params.Input[1].Description = "Number of points to generate"
+        ghenv.Component.Params.Input[1].Access = GH_ParamAccess.item
+        ghenv.Component.Params.Input[1].Optional = True
+
+    # OUTPUTS
+    ghenv.Component.Params.Output[0].Name = "Points"
+    ghenv.Component.Params.Output[0].NickName = "pts"
+    ghenv.Component.Params.Output[0].Description = "List of randomly generated points within the rectangle"
+
+    ghenv.Component.Params.Output[1].Name = "Rectangle"
+    ghenv.Component.Params.Output[1].NickName = "rectOut"
+    ghenv.Component.Params.Output[1].Description = "The original rectangle"
+
+# --- Logic ---
+pts = []
+
+if rect is not None and n is not None and n > 0:
+    domain_x = rect.X
+    domain_y = rect.Y
+    plane = rect.Plane
+
+    for _ in range(n):
+        u = random.uniform(domain_x.T0, domain_x.T1)
+        v = random.uniform(domain_y.T0, domain_y.T1)
+        point = plane.PointAt(u, v)
+        pts.append(point)
+
+# --- Outputs ---
+a = pts
+b = rect
